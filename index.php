@@ -1,13 +1,9 @@
 <?php
 require('db.php');
+require('sign.php');
 
 $description = filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW);
-$task_name = filter_input(INPUT_POST, 'task_name', FILTER_UNSAFE_RAW);
-$task_num = filter_input(INPUT_POST, 'task', FILTER_UNSAFE_RAW);
-#THis action here is what we use in the switch case. In our form, we add a hidden field
-#that holds a value with this attribute, and we use that to determine what happens here.
-$action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
-$message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
+
 
 if($message){
     echo $message;
@@ -22,15 +18,18 @@ if(!$action) {
 
 #echo($action);
  switch($action) {
-    case 'insert':
-        add_task($task_name, $description);
-        header("Location: .?action=list_tasks");
-    case 'delete-task':
-        delete_item($task_num);
-        header("Location: .?action=list_tasks");
-    default:
-        $tasks = get_todo_list();
-        include('view/task_list.php');
-
+    case 'test':
+        //if the user wishes to test, then create an array with the data for each letter. the test should 
+        //include each letter at least once, but even if not, it wont be that complicated to just load 
+        //them all in. Create the array, then send that to the page, then using php, have it display the
+        //letter in question. The array is formatted as:list[item['letter_id']]
+        $letter_data = array();
+        for($i = 97; $i<=122; $i++){
+            //i will correspond to the ascii value of a lower-case letter, whish is needed to pass
+            //to teh read_alpha_data. use that here, reading 26 letters and adding each to the pile. 
+            $letter_data[] = read_alpha_data(chr($i));
+        }
+        include('display.php')
+        //next hop over to the display page, where the php will handle input. 
  }
 ?>
