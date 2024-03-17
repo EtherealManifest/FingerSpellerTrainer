@@ -1,9 +1,8 @@
 <?php
 require('db.php');
 require('sign.php');
-
-$description = filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW);
-
+$action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
+$message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
 
 if($message){
     echo $message;
@@ -12,7 +11,7 @@ if($message){
 if(!$action) {
     $action = filter_input(INPUT_GET, 'action', FILTER_UNSAFE_RAW);
     if(!$action) {
-        $action = 'list_tasks';
+        $action = 'test';
     }
 }
 
@@ -29,7 +28,17 @@ if(!$action) {
             //to teh read_alpha_data. use that here, reading 26 letters and adding each to the pile. 
             $letter_data[] = read_alpha_data(chr($i));
         }
-        include('display.php')
+        include('view/display.php');
         //next hop over to the display page, where the php will handle input. 
+        break;
+    case 'stats':
+        $letter_data = array();
+        for($i = 97; $i<=122; $i++){
+            //i will correspond to the ascii value of a lower-case letter, whish is needed to pass
+            //to teh read_alpha_data. use that here, reading 26 letters and adding each to the pile. 
+            $letter_data[] = read_alpha_data(chr($i));
+        }
+        include 'view/statistics.php';
+        break;
  }
 ?>

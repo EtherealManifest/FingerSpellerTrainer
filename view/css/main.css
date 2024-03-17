@@ -1,0 +1,35 @@
+#stats{
+    width:25%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px 0px 5px;
+    padding: 2px 0px 2px 0px;
+}
+#megaLetter{
+    border:5px solid black;
+    border-radius: 15px;
+    width:20%;
+    margin-left:40%;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 15em;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+#timer{
+    margin: 0px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1em;
+}
+
+.attribute{
+    font-weight: bold;
+}
+
+.data{
+    font-style: italic;
+}
+
+
