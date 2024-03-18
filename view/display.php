@@ -33,7 +33,9 @@ takes to sign it, then display it, and immediatley begin listening for the user 
       e.code == "Space" ||      
       e.keyCode == 32      
         ) {
-            window.location.replace("index.php");
+             var letter = document.getElementById('megaLetter').innerHTML;
+             var time = document.getElementById('timer').innerHTML;
+            window.location.replace("index.php?letter="+letter+"&time="+time);
         }
     }
     )

@@ -1,19 +1,31 @@
 <?php
 require('db.php');
 require('sign.php');
-$action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
+$action = filter_input(INPUT_GET, 'action', FILTER_UNSAFE_RAW);
 $message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
+$time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
+$letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
 
 if($message){
     echo $message;
 }
-
 if(!$action) {
     $action = filter_input(INPUT_GET, 'action', FILTER_UNSAFE_RAW);
     if(!$action) {
-        $action = 'test';
+        $action = 'stats';
     }
 }
+if(!$time) {
+    $time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
+}
+if(!$letter) {
+    $letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
+}
+if($letter && $time){
+    write_alpha_data($letter, $time);
+    $action = 'test';
+}
+
 
 #echo($action);
  switch($action) {

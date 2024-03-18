@@ -5,6 +5,7 @@
     margin: 10px 0px 5px;
     padding: 2px 0px 2px 0px;
 }
+
 #megaLetter{
     border:5px solid black;
     border-radius: 15px;
@@ -23,6 +24,14 @@
     font-weight: bolder;
     font-size: 1em;
 }
+#ID {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    border: 1px solid black;
+}
 
 .attribute{
     font-weight: bold;
@@ -31,5 +40,6 @@
 .data{
     font-style: italic;
 }
+
 
 

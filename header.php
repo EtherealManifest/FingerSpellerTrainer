@@ -6,6 +6,11 @@
     <title>Fingerspelling Practice</title>
     <link rel="stylesheet" href = "view/css/main.css">
 </head>
+<nav>
+    <button> <a href = "index.php?action=test">Test</a></button>
+    <button> <a href = "index.php?action=stats">Stats</a></button>
+
+</nav>
 <body>
     <main class="main">
 <!-- No closing tags, because the Footer will contain them,

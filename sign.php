@@ -12,7 +12,26 @@ function read_alpha_data($letter){
     return $items;
 }
 
-function write_alpha_data($frequency, $haste, $tarry, $average, $letter){
+function write_alpha_data($letter, $time){
+    $letter = str_replace(' ', '', $letter);
+    $data = read_alpha_data($letter)[0];
+    $frequency = $data['frequency'] + 1;
+    if($data['haste'] > $time){
+        $haste = $time;
+    }
+    else{
+        $haste = $data['haste'];
+    }
+
+    if($data['tarry'] < $time){
+        $tarry = $time;
+    }
+    else{
+        $tarry = $data['tarry'];
+    }
+
+    $average = (($data['average'] * $data['frequency']) + $time)/($data['frequency'] + 1);
+
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'UPDATE `alpha_frequency` SET frequency=:frequency,
