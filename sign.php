@@ -17,20 +17,20 @@ function write_alpha_data($letter, $time){
     $data = read_alpha_data($letter)[0];
     $frequency = $data['frequency'] + 1;
     if($data['haste'] > $time){
-        $haste = $time;
+        $haste = $time/1000;
     }
     else{
         $haste = $data['haste'];
     }
 
-    if($data['tarry'] < $time){
-        $tarry = $time;
+    if($data['tarry'] < $time/1000){
+        $tarry = $time/1000;
     }
     else{
         $tarry = $data['tarry'];
     }
 
-    $average = (($data['average'] * $data['frequency']) + $time)/($data['frequency'] + 1);
+    $average = (($data['average'] * $data['frequency']) + $time/1000)/($data['frequency'] + 1);
 
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
