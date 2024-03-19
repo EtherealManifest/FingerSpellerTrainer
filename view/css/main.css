@@ -28,7 +28,6 @@
     font-size: 1em;
 }
 .letter {
-    font-size: 2em;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
@@ -42,7 +41,7 @@
 }
 
 .nav_button{
-    color : red;
+    width: 12em;
 }
 
 .attribute{
