@@ -12,7 +12,9 @@ $string = filter_input(INPUT_POST, 'string', FILTER_UNSAFE_RAW);
 
 $handMode = filter_input(INPUT_POST, 'handMode', FILTER_UNSAFE_RAW);
 
-
+if($handMode){
+    toggle_handMode();
+}
 
 if($message){
     echo $message;

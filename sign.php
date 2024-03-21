@@ -227,3 +227,23 @@ function get_random_string(){
     $statement->closeCursor();
     return $items;
 }
+
+function get_handMode_set(){
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT is_set FROM handmode';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
+
+function toggle_handMode(){
+    global $db;
+    $query = 'UPDATE `handmode` SET `is_set`=:is_set';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':is_set', !get_handMode_set()[0]["is_set"]);
+    $statement->execute();
+    $statement->closeCursor();
+}

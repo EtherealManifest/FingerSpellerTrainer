@@ -16,7 +16,7 @@ th{
     border: 2px solid black;
     text-align: center;
 }
-#megaLetterHand{
+.megaLetterHand{
     font-family:fingerSpell;
     border:5px solid black;
     border-radius: 15px;
@@ -27,7 +27,7 @@ th{
     margin-top: 10px;
     margin-bottom:10px;
 }
-#megaLetter{
+.megaLetter{
     border:5px solid black;
     border-radius: 15px;
     width:20%;
