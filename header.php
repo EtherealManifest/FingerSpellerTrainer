@@ -7,12 +7,18 @@
     <link rel="stylesheet" href = "view/css/main.css">
 </head>
 <nav class = "navigation">
-    <a href = "index.php?action=test_letters"><button class = "nav_button"> Test Letters</button></a>
-    <a href = "index.php?action=test_words"><button class = "nav_button"> Test Words</button></a>
-    <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a>
-    <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a>
-    <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a>
-    <a href = "index.php?action=test_strings"><button class = "nav_button">Test Strings</button></a>
+    <div class = "test_nav">
+        <a href = "index.php?action=test_letters"><button class = "nav_button"> Test Letters</button></a><br>
+        <a href = "index.php?action=test_words"><button class = "nav_button"> Test Words</button></a><br>
+        <a href = "index.php?action=test_strings"><button class = "nav_button">Test Strings</button></a><br>
+    </div>
+    <div class = "add_nav">
+        <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a><br>
+        <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a><br>
+    </div>
+    <div class = "stats_nav">
+        <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a><br>
+    </div>
 
 </nav>
 <body>

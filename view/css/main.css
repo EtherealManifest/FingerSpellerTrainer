@@ -74,12 +74,28 @@ th{
 
 .nav_button{
     width: 12em;
+    background-color: lightsteelblue;
+    border: 1px solid steelblue;
+    
 }
-
+.stats_nav{
+    padding-bottom:5px;
+    clear:right;
+}
+.test_nav{
+    padding-bottom:5px;
+    float:inline-start;
+}
+.add_nav{
+    padding-bottom:5px;
+    float:inline-start;
+}
 .attribute{
     font-weight: bold;
 }
-
+.navigation{
+    display:flex;
+}
 .data{
     font-style: italic;
 }
