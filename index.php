@@ -10,6 +10,10 @@ $letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
 $new_string = filter_input(INPUT_POST, 'new_string', FILTER_UNSAFE_RAW);
 $string = filter_input(INPUT_POST, 'string', FILTER_UNSAFE_RAW);
 
+$handMode = filter_input(INPUT_POST, 'handMode', FILTER_UNSAFE_RAW);
+
+
+
 if($message){
     echo $message;
 }
@@ -85,8 +89,14 @@ if($string && $time){
         include('view/addWord.php');
         break;
     case('add_word'):
+        if(read_word_data($new_word)){
+            $message = "Word Already in Database";
+        }
+        else{
         add_word($new_Word);
-        header("Location: .?action=add");
+        $message = $new_word." Added";
+        }
+        header("Location: .?action=add&message=".$message);
         break;
     case 'add_string':
         include('view/addString.php');

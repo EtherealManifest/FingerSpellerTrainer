@@ -57,8 +57,21 @@ takes to sign it, then display it, and immediatley begin listening for the user 
     }</script>
 
 <!--Start the timer, stored in begin -->
+<form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
+    <input type="hidden" name="handMode" value="<?=!$handMode?>">
+    <input type="hidden" name="action" value="test_letters">
+    <button type="submit">Toggle Hand Mode</button>
+</form>
+
 <script> var begin = startWatch(); </script>
+<?php 
+global $handMode;
+echo "Hand Mode: Set to ".$handMode;
+if ($handMode){ ?>
+    <p id= "megaLetter"><?php test()?></p>
+ <?php } else { ?>
 <p id= "megaLetter"><?php test()?></p>
+<?php } ?>
 <p id= "timer"></p>
 <script>
     setInterval(timer, 1);

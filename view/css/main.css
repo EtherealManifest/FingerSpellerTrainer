@@ -3,14 +3,30 @@
     src: url("../../fonts/SIGNFONT-REGULAR.TTF");
   }
 
-#stats{
-    width:25%;
-    border: 2px solid black;
-    border-radius: 5px;
-    margin: 10px 0px 5px;
-    padding: 2px 0px 2px 0px;
+table{
+    border: 3px solid black;
+    border-collapse: collapse;
 }
-
+td {
+    border: 1px solid black;
+    text-align: center;
+  
+}
+th{
+    border: 2px solid black;
+    text-align: center;
+}
+#megaLetterHand{
+    font-family:fingerSpell;
+    border:5px solid black;
+    border-radius: 15px;
+    width:20%;
+    margin-left:40%;
+    text-align:center;
+    font-size: 15em;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
 #megaLetter{
     border:5px solid black;
     border-radius: 15px;
@@ -19,6 +35,17 @@
     text-align:center;
     font-weight:bolder;
     font-size: 15em;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+#megaString {
+    border:5px solid black;
+    border-radius: 15px;
+    width:auto;
+    margin-left:auto;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 13em;
     margin-top: 10px;
     margin-bottom:10px;
 }
@@ -34,23 +61,37 @@
     margin-bottom:10px;
 }
 
-#megaString {
-    border:5px solid black;
-    border-radius: 15px;
-    width:auto;
-    margin-left:auto;
-    text-align:center;
-    font-weight:bolder;
-    font-size: 13em;
-    margin-top: 10px;
-    margin-bottom:10px;
+#stats{
+    width:25%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px 0px 5px;
+    padding: 2px 0px 2px 0px;
 }
-
 #timer{
     margin: 0px;
     text-align: center;
     font-weight: bolder;
     font-size: 1em;
+}
+
+
+
+
+
+.add_nav{
+    width:10%;
+    padding-left:30%;
+    padding-bottom:5px;
+    float:inline-start;
+}
+.attribute{
+    font-weight: bold;
+}
+.caption{
+    margin-top: 0;
+    text-align: center;
+    font-size: 3em;
 }
 .title{
     font-family: fingerSpell;
@@ -63,18 +104,8 @@
     text-align: center;
     font-size: 3em;
 }
-table{
-    border: 3px solid black;
-    border-collapse: collapse;
-}
-td {
-    border: 1px solid black;
-    text-align: center;
-  
-}
-th{
-    border: 2px solid black;
-    text-align: center;
+.data{
+    font-style: italic;
 }
 .letter {
     font-weight: bold;
@@ -83,8 +114,12 @@ th{
     text-align: center;
     border: 1px solid black;
 }
-
-
+.letter_stats_table{
+    float:left;
+}
+.navigation{
+    display:flex;
+}
 .nav_button{
     width: 12em;
     background-color: lightsteelblue;
@@ -97,40 +132,21 @@ th{
     padding-bottom:5px;
     clear:right;
 }
-.test_nav{
-
-    padding-bottom:5px;
-    float:inline-start;
-}
-.add_nav{
-    width:10%;
-    padding-left:30%;
-    padding-bottom:5px;
-    float:inline-start;
-}
-.attribute{
-    font-weight: bold;
-}
 .stat_table_label{
     text-align:center;
     font-weight: bold;
     font-size: 2em;
 }
-
-.navigation{
-    display:flex;
-}
-.data{
-    font-style: italic;
-}
-
 .string_stats_table{
     float:left;
+}
+.test_nav{
+
+    padding-bottom:5px;
+    float:inline-start;
 }
 .word_stats_table{
     float:left;
 }
-.letter_stats_table{
-    float:left;
-}
+
 
