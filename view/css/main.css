@@ -20,6 +20,29 @@
     margin-top: 10px;
     margin-bottom:10px;
 }
+#megaWord {
+    border:5px solid black;
+    border-radius: 15px;
+    width:auto;
+    margin-left:auto;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 15em;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+#megaString {
+    border:5px solid black;
+    border-radius: 15px;
+    width:auto;
+    margin-left:auto;
+    text-align:center;
+    font-weight:bolder;
+    font-size: 13em;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
 
 #timer{
     margin: 0px;
@@ -27,9 +50,18 @@
     font-weight: bolder;
     font-size: 1em;
 }
-table, th, td {
+table{
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+td {
     border: 1px solid black;
+    text-align: center;
   
+}
+th{
+    border: 2px solid black;
+    text-align: center;
 }
 .letter {
     font-weight: bold;
@@ -39,10 +71,6 @@ table, th, td {
     border: 1px solid black;
 }
 
-.navigation{
-    border: 2px solid black;
-    border-radius: 5px;
-}
 
 .nav_button{
     width: 12em;

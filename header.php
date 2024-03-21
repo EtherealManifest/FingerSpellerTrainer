@@ -7,8 +7,13 @@
     <link rel="stylesheet" href = "view/css/main.css">
 </head>
 <nav class = "navigation">
-    <button class = "nav_button"> <a href = "index.php?action=test">Test</a></button>
-    <button class = "nav_button"> <a href = "index.php?action=stats">Stats</a></button>
+    <a href = "index.php?action=test_letters"><button class = "nav_button"> Test Letters</button></a>
+    <a href = "index.php?action=test_words"><button class = "nav_button"> Test Words</button></a>
+    <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a>
+    <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a>
+    <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a>
+    <a href = "index.php?action=test_strings"><button class = "nav_button">Test Strings</button></a>
+
 </nav>
 <body>
     <main class="main">
