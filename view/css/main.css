@@ -1,5 +1,7 @@
-
-
+@font-face {
+    font-family: "fingerSpell";
+    src: url("../../fonts/SIGNFONT-REGULAR.TTF");
+  }
 
 #stats{
     width:25%;
@@ -50,6 +52,17 @@
     font-weight: bolder;
     font-size: 1em;
 }
+.title{
+    font-family: fingerSpell;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom:0px;
+}
+.caption{
+    margin-top: 0;
+    text-align: center;
+    font-size: 3em;
+}
 table{
     border: 3px solid black;
     border-collapse: collapse;
@@ -79,20 +92,31 @@ th{
     
 }
 .stats_nav{
+    width:10%;
+    padding-left:34.35%;
     padding-bottom:5px;
     clear:right;
 }
 .test_nav{
+
     padding-bottom:5px;
     float:inline-start;
 }
 .add_nav{
+    width:10%;
+    padding-left:30%;
     padding-bottom:5px;
     float:inline-start;
 }
 .attribute{
     font-weight: bold;
 }
+.stat_table_label{
+    text-align:center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
 .navigation{
     display:flex;
 }
@@ -100,5 +124,13 @@ th{
     font-style: italic;
 }
 
-
+.string_stats_table{
+    float:left;
+}
+.word_stats_table{
+    float:left;
+}
+.letter_stats_table{
+    float:left;
+}
 

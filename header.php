@@ -6,6 +6,10 @@
     <title>Fingerspelling Practice</title>
     <link rel="stylesheet" href = "view/css/main.css">
 </head>
+<header>
+    <p class="title">HandSpeak Trainer</p>
+    <p class="caption">H a n d S p e a k  - T r a i n e r</p>
+</header>
 <nav class = "navigation">
     <div class = "test_nav">
         <a href = "index.php?action=test_letters"><button class = "nav_button"> Test Letters</button></a><br>

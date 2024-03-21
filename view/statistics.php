@@ -1,4 +1,6 @@
 <?php include 'header.php'; ?>
+<div class="letter_stats_table">
+<p class = "stat_table_label">LETTERS</p>
 <table>
     <tr>
         <th>ID</th>
@@ -21,8 +23,9 @@
     </tr>
 <?php } ?>
     </table>
-
-
+    </div>
+<div class = "string_stats_table">
+    <p class = "stat_table_label">S-T-R-I-N-G-S</p>
     <table>
     <tr>
         <th>ID</th>
@@ -45,7 +48,10 @@
     </tr>
 <?php } ?>
     </table>
+</div>
 
+<div class = "word_stats_table">
+    <p class = "stat_table_label">WORDS</p>
 <table>
     <tr>
         <th>ID</th>
@@ -66,4 +72,7 @@
     </tr>
 <?php } ?>
     </table>
+</div>
+
+
 <?php include 'footer.php'; ?>
