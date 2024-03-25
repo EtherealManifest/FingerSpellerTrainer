@@ -9,9 +9,8 @@ $time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
 $letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
 $new_string = filter_input(INPUT_POST, 'new_string', FILTER_UNSAFE_RAW);
 $string = filter_input(INPUT_POST, 'string', FILTER_UNSAFE_RAW);
-
+$filter = filter_input(INPUT_POST, 'filter', FILTER_UNSAFE_RAW);
 $handMode = filter_input(INPUT_POST, 'handMode', FILTER_UNSAFE_RAW);
-
 if($handMode){
     toggle_handMode();
 }
@@ -19,12 +18,20 @@ if($handMode){
 if($message){
     echo $message;
 }
+if(!$filter){
+    $filter = filter_input(INPUT_GET, 'filter', FILTER_UNSAFE_RAW);
+    if(!$filter){
+        $filter = get_filter();
+    }
+}
+set_filter($filter);
 if(!$action) {
     $action = filter_input(INPUT_GET, 'action', FILTER_UNSAFE_RAW);
     if(!$action) {
         $action = 'stats';
     }
 }
+
 if(!$time) {
     $time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
 }
@@ -54,8 +61,17 @@ if($string && $time){
     write_string_data($string, $time);
     $action = 'test_strings';
 }
-#echo($action);
  switch($action) {
+    case 'reset_words':
+        reset_Words();
+        header("Location: .?action=stats");
+        break;
+    case 'reset_letters':
+        reset_Letters();
+        header("Location: .?action=stats");
+    case 'reset_strings':
+        reset_Strings();
+        header("Location: .?action=stats");
     case 'test_words':
         include('view/display_word.php');
         //next hop over to the display page, where the php will handle input. 
@@ -65,24 +81,12 @@ if($string && $time){
         //include each letter at least once, but even if not, it wont be that complicated to just load 
         //them all in. Create the array, then send that to the page, then using php, have it display the
         //letter in question. The array is formatted as:list[item['letter_id']]
-        $letter_data = array();
-        for($i = 97; $i<=122; $i++){
-            //i will correspond to the ascii value of a lower-case letter, whish is needed to pass
-            //to teh read_alpha_data. use that here, reading 26 letters and adding each to the pile. 
-            $letter_data[] = read_alpha_data(chr($i));
-        }
+        $letter_data = read_alphas_data();
         include('view/display.php');
         //next hop over to the display page, where the php will handle input. 
         break;
     case 'stats':
-        $letter_data = array();
-        $word_data = array();
-        $string_data = array();
-        for($i = 97; $i<=122; $i++){
-            //i will correspond to the ascii value of a lower-case letter, whish is needed to pass
-            //to teh read_alpha_data. use that here, reading 26 letters and adding each to the pile. 
-            $letter_data[] = read_alpha_data(chr($i));
-        }
+        $letter_data = read_alphas_data();
         $word_data = read_words_data();
         $string_data = read_strings_data();
         include 'view/statistics.php';

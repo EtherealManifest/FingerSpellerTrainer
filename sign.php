@@ -1,11 +1,35 @@
 <!--This is the file where the actual spelling takes place. -->
 <?php 
+
+
+#--------------------------------------------------------------------------------------------------
+#Letter Functions
+#--------------------------------------------------------------------------------------------------
+
 function read_alpha_data($letter){
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM alpha_frequency WHERE letter = :letter' ;
     $statement = $db->prepare($query);
     $statement->bindValue(':letter', $letter);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
+
+function read_alphas_data(){
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM alpha_frequency';
+    $add = add_filter();
+    if($add == ''){
+        $query .= " ORDER BY letter";
+    }
+    else{
+        $query.=$add;
+    }    
+    $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
     $statement->closeCursor();
@@ -48,6 +72,30 @@ function write_alpha_data($letter, $time){
     $statement->execute();
     $statement->closeCursor();
 }
+
+function reset_Letters(){
+    global $db;
+    $query = 'UPDATE `alpha_frequency` SET `frequency`=0,`haste`=999,`tarry`=0.00,`average`=0.00';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+
+
+#--------------------------------------------------------------------------------------------------
+#Word Functions
+#--------------------------------------------------------------------------------------------------
+
+function reset_Words(){
+    global $db;
+    $query = 'UPDATE `word_frequency` SET `frequency`=0,`haste`=999,`tarry`=0.00,`average`=0.00';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+
 function read_word_data($word){
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
@@ -63,7 +111,14 @@ function read_word_data($word){
 function read_words_data(){
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM word_frequency ORDER BY word';
+    $query = 'SELECT * FROM word_frequency';
+    $add = add_filter();
+    if($add == ''){
+        $query .= " ORDER BY word";
+    }
+    else{
+        $query.=$add;
+    } 
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
@@ -129,6 +184,52 @@ function get_random_word(){
     $items = $statement->fetchAll();
     $statement->closeCursor();
     return $items;
+}
+
+
+
+#--------------------------------------------------------------------------------------------------
+#String Functions
+#--------------------------------------------------------------------------------------------------
+
+
+
+function read_strings_data(){
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM string_frequency';
+    $add = add_filter();
+    if($add == ''){
+        $query .= " ORDER BY string";
+    }
+    else{
+        $query.=$add;
+    } 
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
+
+function get_random_string(){
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM string_frequency ORDER BY Rand() LIMIT 1';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
+
+function reset_Strings(){
+    global $db;
+    $query = 'UPDATE `string_frequency` SET `haste`=999,`tarry`= 0.00,`average`=0.00,`frequency`=0 ';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $statement->closeCursor();
+
 }
 
 function string_format($u_string){
@@ -206,27 +307,10 @@ function read_string_data ($string){
 }
 
 
-function read_strings_data(){
-    global $db;
-    #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM string_frequency ORDER BY string';
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $items = $statement->fetchAll();
-    $statement->closeCursor();
-    return $items;
-}
+#--------------------------------------------------------------------------------------------------
+#HandMode Functions
+#--------------------------------------------------------------------------------------------------
 
-function get_random_string(){
-    global $db;
-    #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM string_frequency ORDER BY Rand() LIMIT 1';
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $items = $statement->fetchAll();
-    $statement->closeCursor();
-    return $items;
-}
 
 function get_handMode_set(){
     global $db;
@@ -247,3 +331,55 @@ function toggle_handMode(){
     $statement->execute();
     $statement->closeCursor();
 }
+
+
+function add_filter(){
+    $filter = get_filter();
+    $query = " ORDER BY ";
+    switch($filter){
+        case 'haste':
+            $query .= "haste";
+            break;
+        case 'tarry':
+            $query .= "tarry DESC";
+            break;
+        case 'new':
+            $query .= "ID DESC";
+            break;
+        case 'old':
+            $query .= "ID";
+            break;
+        case 'common':
+            $query .= "frequency DESC";
+            break;
+        case 'rare':
+            $query .= "frequency";
+            break;
+        default:
+            $query='';
+    }
+    return $query;
+
+    }
+
+    
+function set_filter($filter){
+    global $db;
+    $query = "UPDATE `filter` SET `status`=:status";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':status', $filter);
+    $statement->execute();
+    $statement->closeCursor();
+    }
+
+    
+function get_filter(){
+    global $db;
+    $query = "SELECT `status` FROM `filter`";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items[0]["status"];
+    }
+

@@ -20,6 +20,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <?php function test(){ ?>
     <?php 
     global $letter_data;
+    global $filter;
     $letter_num = rand(97, 122);
     $_letter_ = chr($letter_num);
     echo $_letter_;
@@ -35,7 +36,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         ) {
              var letter = document.getElementById('megaLetter').innerHTML;
              var time = document.getElementById('timer').innerHTML;
-            window.location.replace("index.php?letter="+letter+"&time="+time);
+            window.location.replace("index.php?letter="+letter+"&time="+time");
         }
     }
     )
