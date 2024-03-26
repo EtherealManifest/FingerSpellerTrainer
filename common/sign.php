@@ -1,11 +1,8 @@
 <!--This is the file where the actual spelling takes place. -->
 <?php
-
-
 #--------------------------------------------------------------------------------------------------
 #Letter Functions
 #--------------------------------------------------------------------------------------------------
-
 function read_alpha_data($letter)
 {
     global $db;
@@ -185,7 +182,8 @@ function get_random_word()
 {
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM word_frequency ORDER BY Rand() LIMIT 1';
+    $query = 'SELECT * FROM word_frequency';
+    $query .= add_filter();
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();

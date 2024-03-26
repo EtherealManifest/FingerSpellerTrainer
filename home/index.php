@@ -3,17 +3,10 @@ require_once('../common/db.php');
 require_once('../common/sign.php');
 $action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
 $new_Word = filter_input(INPUT_POST, 'new_Word', FILTER_UNSAFE_RAW);
-$word = filter_input(INPUT_POST, 'word', FILTER_UNSAFE_RAW);
-$message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
-$time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
-$letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
 $new_string = filter_input(INPUT_POST, 'new_string', FILTER_UNSAFE_RAW);
-$string = filter_input(INPUT_POST, 'string', FILTER_UNSAFE_RAW);
+$message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
 $filter = filter_input(INPUT_POST, 'filter', FILTER_UNSAFE_RAW);
-$handMode = filter_input(INPUT_POST, 'handMode', FILTER_UNSAFE_RAW);
-if($handMode){
-    toggle_handMode();
-}
+
 
 if($message){
     echo $message;
@@ -30,36 +23,6 @@ if(!$action) {
     if(!$action) {
         $action = 'stats';
     }
-}
-
-if(!$time) {
-    $time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
-}
-if(!$letter) {
-    $letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
-}
-if(!$word) {
-    $word = filter_input(INPUT_GET, 'word', FILTER_UNSAFE_RAW);
-}
-
-if(!$string) {
-    $string = filter_input(INPUT_GET, 'string', FILTER_UNSAFE_RAW);
-}
-
-
-if($letter && $time){
-    write_alpha_data($letter, $time);
-    $action = 'test_letters';
-}
-
-if($word && $time){
-    write_word_data($word, $time);
-    $action = 'test_words';
-}
-
-if($string && $time){
-    write_string_data($string, $time);
-    $action = 'test_strings';
 }
  switch($action) {
     case 'reset_words':

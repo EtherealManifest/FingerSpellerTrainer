@@ -2,7 +2,7 @@
 <?php include("view/header.php"); ?>
 
 <div>
-    <form action="test-index.php" method="POST">
+    <form action="test_index.php" method="POST">
         <input type="hidden" name="action" value="test">
         <label for="volume">Number of Words to Test: </label> 
         <select required name="volume" id="volume">

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fingerspelling Practice</title>
-    <link rel="stylesheet" href = "view/css/main.css">
+    <title>Fingerspelling Testing</title>
+    <link rel="stylesheet" href= "..\common\view\css\main.css">
 </head>
 <header>
     <p class="title">HandSpeak Trainer</p>
@@ -13,7 +13,7 @@
 <nav class = "navigation">
     <div class = "test_nav">
         <a href = "../home/index.php"><button class = "nav_button">Home</button></a><br>
-        <a href = "test-index.php"><button class = "nav_button">Test</button></a><br>
+        <a href = "./test_index.php"><button class = "nav_button">Test</button></a><br>
     <div>
 
 </nav>
