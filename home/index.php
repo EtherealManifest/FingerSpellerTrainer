@@ -1,6 +1,6 @@
 <?php
-require('db.php');
-require('sign.php');
+require_once('../common/db.php');
+require_once('../common/sign.php');
 $action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
 $new_Word = filter_input(INPUT_POST, 'new_Word', FILTER_UNSAFE_RAW);
 $word = filter_input(INPUT_POST, 'word', FILTER_UNSAFE_RAW);
@@ -72,19 +72,6 @@ if($string && $time){
     case 'reset_strings':
         reset_Strings();
         header("Location: .?action=stats");
-    case 'test_words':
-        include('view/display_word.php');
-        //next hop over to the display page, where the php will handle input. 
-        break;
-    case 'test_letters':
-        //if the user wishes to test, then create an array with the data for each letter. the test should 
-        //include each letter at least once, but even if not, it wont be that complicated to just load 
-        //them all in. Create the array, then send that to the page, then using php, have it display the
-        //letter in question. The array is formatted as:list[item['letter_id']]
-        $letter_data = read_alphas_data();
-        include('view/display.php');
-        //next hop over to the display page, where the php will handle input. 
-        break;
     case 'stats':
         $letter_data = read_alphas_data();
         $word_data = read_words_data();
@@ -111,7 +98,5 @@ if($string && $time){
         add_string($new_string);
         header("Location: .?action=add_string");
         break;
-    case 'test_strings':
-        include('view/display_string.php');
  }
 ?>

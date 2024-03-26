@@ -12,17 +12,9 @@
 </header>
 <nav class = "navigation">
     <div class = "test_nav">
-        <a href = "index.php?action=test_letters"><button class = "nav_button"> Test Letters</button></a><br>
-        <a href = "index.php?action=test_words"><button class = "nav_button"> Test Words</button></a><br>
-        <a href = "index.php?action=test_strings"><button class = "nav_button">Test Strings</button></a><br>
-    </div>
-    <div class = "add_nav">
-        <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a><br>
-        <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a><br>
-    </div>
-    <div class = "stats_nav">
-        <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a><br>
-    </div>
+        <a href = "../home/index.php"><button class = "nav_button">Home</button></a><br>
+        <a href = "test-index.php"><button class = "nav_button">Test</button></a><br>
+    <div>
 
 </nav>
 <body>
@@ -39,7 +31,6 @@
             <option value="alpha">Alphabetical</option>
         </select>
         <button class="submit">SUBMIT</button>
-        </form>
-        <?= get_filter();?>
+    </form>
 <!-- No closing tags, because the Footer will contain them,
  and php treats include statements as if the code is actually there -->

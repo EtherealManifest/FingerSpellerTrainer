@@ -1,15 +1,16 @@
 <!--This is the file where the actual spelling takes place. -->
-<?php 
+<?php
 
 
 #--------------------------------------------------------------------------------------------------
 #Letter Functions
 #--------------------------------------------------------------------------------------------------
 
-function read_alpha_data($letter){
+function read_alpha_data($letter)
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM alpha_frequency WHERE letter = :letter' ;
+    $query = 'SELECT * FROM alpha_frequency WHERE letter = :letter';
     $statement = $db->prepare($query);
     $statement->bindValue(':letter', $letter);
     $statement->execute();
@@ -18,17 +19,18 @@ function read_alpha_data($letter){
     return $items;
 }
 
-function read_alphas_data(){
+function read_alphas_data()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM alpha_frequency';
     $add = add_filter();
-    if($add == ''){
+    if ($add == '') {
         $query .= " ORDER BY letter";
+        $query .= add_volume();
+    } else {
+        $query .= $add;
     }
-    else{
-        $query.=$add;
-    }    
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
@@ -36,25 +38,24 @@ function read_alphas_data(){
     return $items;
 }
 
-function write_alpha_data($letter, $time){
+function write_alpha_data($letter, $time)
+{
     $letter = str_replace(' ', '', $letter);
     $data = read_alpha_data($letter)[0];
     $frequency = $data['frequency'] + 1;
-    if($data['haste'] > $time){
-        $haste = $time/1000;
-    }
-    else{
+    if ($data['haste'] > $time) {
+        $haste = $time / 1000;
+    } else {
         $haste = $data['haste'];
     }
 
-    if($data['tarry'] < $time/1000){
-        $tarry = $time/1000;
-    }
-    else{
+    if ($data['tarry'] < $time / 1000) {
+        $tarry = $time / 1000;
+    } else {
         $tarry = $data['tarry'];
     }
 
-    $average = (($data['average'] * $data['frequency']) + $time/1000)/($data['frequency'] + 1);
+    $average = (($data['average'] * $data['frequency']) + $time / 1000) / ($data['frequency'] + 1);
 
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
@@ -73,7 +74,8 @@ function write_alpha_data($letter, $time){
     $statement->closeCursor();
 }
 
-function reset_Letters(){
+function reset_Letters()
+{
     global $db;
     $query = 'UPDATE `alpha_frequency` SET `frequency`=0,`haste`=999,`tarry`=0.00,`average`=0.00';
     $statement = $db->prepare($query);
@@ -87,7 +89,8 @@ function reset_Letters(){
 #Word Functions
 #--------------------------------------------------------------------------------------------------
 
-function reset_Words(){
+function reset_Words()
+{
     global $db;
     $query = 'UPDATE `word_frequency` SET `frequency`=0,`haste`=999,`tarry`=0.00,`average`=0.00';
     $statement = $db->prepare($query);
@@ -96,10 +99,11 @@ function reset_Words(){
 }
 
 
-function read_word_data($word){
+function read_word_data($word)
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = 'SELECT * FROM word_frequency WHERE word = :word' ;
+    $query = 'SELECT * FROM word_frequency WHERE word = :word';
     $statement = $db->prepare($query);
     $statement->bindValue(':word', $word);
     $statement->execute();
@@ -108,17 +112,19 @@ function read_word_data($word){
     return $items;
 }
 
-function read_words_data(){
+function read_words_data()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM word_frequency';
     $add = add_filter();
-    if($add == ''){
+    if ($add == '') {
         $query .= " ORDER BY word";
+        $query .= add_volume();
+        
+    } else {
+        $query .= $add;
     }
-    else{
-        $query.=$add;
-    } 
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
@@ -126,25 +132,24 @@ function read_words_data(){
     return $items;
 }
 
-function write_word_data($word, $time){
+function write_word_data($word, $time)
+{
     $word = str_replace(' ', '', $word);
     $data = read_word_data($word)[0];
     $frequency = $data['frequency'] + 1;
-    if($data['haste'] > $time/1000){
-        $haste = $time/1000;
-    }
-    else{
+    if ($data['haste'] > $time / 1000) {
+        $haste = $time / 1000;
+    } else {
         $haste = $data['haste'];
     }
 
-    if($data['tarry'] < $time/1000){
-        $tarry = $time/1000;
-    }
-    else{
+    if ($data['tarry'] < $time / 1000) {
+        $tarry = $time / 1000;
+    } else {
         $tarry = $data['tarry'];
     }
 
-    $average = (($data['average'] * $data['frequency']) + $time/1000)/($data['frequency'] + 1);
+    $average = (($data['average'] * $data['frequency']) + $time / 1000) / ($data['frequency'] + 1);
 
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
@@ -163,7 +168,8 @@ function write_word_data($word, $time){
     $statement->closeCursor();
 }
 
-function add_word($word){
+function add_word($word)
+{
     global $db;
 
     $query = 'INSERT INTO `word_frequency`(`word`, `frequency`,`haste`, `tarry`, `average`) 
@@ -175,7 +181,8 @@ function add_word($word){
     $statement->closeCursor();
 }
 
-function get_random_word(){
+function get_random_word()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM word_frequency ORDER BY Rand() LIMIT 1';
@@ -194,17 +201,18 @@ function get_random_word(){
 
 
 
-function read_strings_data(){
+function read_strings_data()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM string_frequency';
     $add = add_filter();
-    if($add == ''){
+    if ($add == '') {
         $query .= " ORDER BY string";
+        $query .= add_volume();
+    } else {
+        $query .= $add;
     }
-    else{
-        $query.=$add;
-    } 
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
@@ -212,7 +220,8 @@ function read_strings_data(){
     return $items;
 }
 
-function get_random_string(){
+function get_random_string()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM string_frequency ORDER BY Rand() LIMIT 1';
@@ -223,7 +232,8 @@ function get_random_string(){
     return $items;
 }
 
-function reset_Strings(){
+function reset_Strings()
+{
     global $db;
     $query = 'UPDATE `string_frequency` SET `haste`=999,`tarry`= 0.00,`average`=0.00,`frequency`=0 ';
     $statement = $db->prepare($query);
@@ -232,18 +242,20 @@ function reset_Strings(){
 
 }
 
-function string_format($u_string){
-    $array = str_split($u_string);  
+function string_format($u_string)
+{
+    $array = str_split($u_string);
     $new_word = array();
-    foreach($array as $val){ 
-            array_push($new_word, $val."-"); 
+    foreach ($array as $val) {
+        array_push($new_word, $val . "-");
     }
-    $f_string=implode($new_word);
+    $f_string = implode($new_word);
     $f_string = rtrim($f_string, "-");
     return $f_string;
 }
 
-function add_string($string){
+function add_string($string)
+{
     global $db;
     $new_string = string_format($string);
     $query = 'INSERT INTO `string_frequency`(`string`, `length`, `frequency`,`haste`, `tarry`, `average`) 
@@ -256,25 +268,24 @@ function add_string($string){
     $statement->closeCursor();
 }
 
-function write_string_data($string, $time){
+function write_string_data($string, $time)
+{
     $string = str_replace(' ', '', $string);
     $data = read_string_data($string)[0];
     $frequency = $data['frequency'] + 1;
-    if($data['haste'] > $time/1000){
-        $haste = $time/1000;
-    }
-    else{
+    if ($data['haste'] > $time / 1000) {
+        $haste = $time / 1000;
+    } else {
         $haste = $data['haste'];
     }
 
-    if($data['tarry'] < $time/1000){
-        $tarry = $time/1000;
-    }
-    else{
+    if ($data['tarry'] < $time / 1000) {
+        $tarry = $time / 1000;
+    } else {
         $tarry = $data['tarry'];
     }
 
-    $average = (($data['average'] * $data['frequency']) + $time/1000)/($data['frequency'] + 1);
+    $average = (($data['average'] * $data['frequency']) + $time / 1000) / ($data['frequency'] + 1);
 
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
@@ -293,12 +304,13 @@ function write_string_data($string, $time){
     $statement->closeCursor();
 }
 
-function read_string_data ($string){
+function read_string_data($string)
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
-    $query = "SELECT * FROM string_frequency WHERE string = :string" ;
+    $query = "SELECT * FROM string_frequency WHERE string = :string";
     $statement = $db->prepare($query);
-    $statement->bindValue(':string', $string );
+    $statement->bindValue(':string', $string);
     $statement->execute();
     $items = $statement->fetchAll();
     $statement->closeCursor();
@@ -312,7 +324,8 @@ function read_string_data ($string){
 #--------------------------------------------------------------------------------------------------
 
 
-function get_handMode_set(){
+function get_handMode_set()
+{
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT is_set FROM handmode';
@@ -323,7 +336,8 @@ function get_handMode_set(){
     return $items;
 }
 
-function toggle_handMode(){
+function toggle_handMode()
+{
     global $db;
     $query = 'UPDATE `handmode` SET `is_set`=:is_set';
     $statement = $db->prepare($query);
@@ -333,10 +347,11 @@ function toggle_handMode(){
 }
 
 
-function add_filter(){
+function add_filter()
+{
     $filter = get_filter();
     $query = " ORDER BY ";
-    switch($filter){
+    switch ($filter) {
         case 'haste':
             $query .= "haste";
             break;
@@ -356,24 +371,32 @@ function add_filter(){
             $query .= "frequency";
             break;
         default:
-            $query='';
+            $query = '';
     }
+    $query .= add_volume();
     return $query;
 
-    }
+}
 
-    
-function set_filter($filter){
+function add_volume()
+{
+    $query = ' LIMIT ' . get_volume();
+    return $query;
+}
+
+function set_filter($filter)
+{
     global $db;
     $query = "UPDATE `filter` SET `status`=:status";
     $statement = $db->prepare($query);
     $statement->bindValue(':status', $filter);
     $statement->execute();
     $statement->closeCursor();
-    }
+}
 
-    
-function get_filter(){
+
+function get_filter()
+{
     global $db;
     $query = "SELECT `status` FROM `filter`";
     $statement = $db->prepare($query);
@@ -381,5 +404,26 @@ function get_filter(){
     $items = $statement->fetchAll();
     $statement->closeCursor();
     return $items[0]["status"];
-    }
+}
 
+function set_volume($volume)
+{
+    global $db;
+    $query = "UPDATE `filter` SET `volume`=:volume";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':volume', $volume);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+
+function get_volume()
+{
+    global $db;
+    $query = "SELECT `volume` FROM `filter`";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items[0]["volume"];
+}
