@@ -57,13 +57,13 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 
 <!--Start the timer, stored in begin -->
 <script> var begin = startWatch(); </script>
-<div class="word_sector">
+<div class="token_sector">
     <?php 
     $this_word = test();
     ?>
-    <p class = "word_id">#<?=$this_word["ID"]?></p>
-    <p class = "word_frequency"><?=$this_word["frequency"]?></p>
-    <p class = "word_average"><?=$this_word["average"]?></p>
+    <p class = "token_id">#<?=$this_word["ID"]?></p>
+    <p class = "token_frequency"><?=$this_word["frequency"]?></p>
+    <p class = "token_average"><?=$this_word["average"]?></p>
     <p id= "megaWord"><?=$this_word["word"]?></p>
     
 </div>

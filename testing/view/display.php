@@ -20,10 +20,10 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <?php function test(){ ?>
     <?php 
     global $letter_data;
-    global $filter;
-    $letter_num = rand(97, 122);
-    $_letter_ = chr($letter_num);
-    echo $_letter_;
+    $letter_num = rand(0, get_volume()-1);
+    $letter = chr($letter_num);
+    $_letter_ = $letter_data[$letter_num];
+    return $_letter_;
 }
 ?>
 <script>
@@ -36,7 +36,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         ) {
              var letter = document.getElementById('megaLetter').innerHTML;
              var time = document.getElementById('timer').innerHTML;
-            window.location.replace("test_index.php?letter="+letter+"&time="+time");
+            window.location.replace("test_index.php?letter="+letter+"&time="+time);
         }
     }
     )
@@ -60,17 +60,26 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <!--Start the timer, stored in begin -->
 <form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
     <input type="hidden" name="handMode" value="handMode">
-    <input type="hidden" name="action" value="test_letters">
+    <input type="hidden" name="action" value="test">
+    <input type="hidden" name="type" value="letters">
     <button type="submit">Toggle Hand Mode</button>
 </form>
 
 <script> var begin = startWatch(); </script>
-<?php 
-if (get_handMode_set()[0][0]){?>
-    <p id= "megaLetter" class = "megaLetterHand"><?php test()?></p>
- <?php } else { ?>
-<p id= "megaLetter" class = "megaLetter"><?php test()?></p>
-<?php } ?>
+<div class="token_sector">
+    <?php 
+    $this_letter = test();
+    ?>
+    <p class = "token_id">#<?=$this_letter["ID"]?></p>
+    <p class = "token_frequency"><?=$this_letter["frequency"]?></p>
+    <p class = "token_average"><?=$this_letter["average"]?></p>
+    <?php
+    if (get_handMode_set()[0][0]){?>
+        <p id= "megaLetter" class = "megaLetterHand"><?=$this_letter["letter"]?></p>
+    <?php } else { ?>
+    <p id= "megaLetter" class = "megaLetter"><?=$this_letter["letter"]?></p>
+    <?php } ?>
+    </div>
 <p id= "timer"></p>
 <script>
     setInterval(timer, 1);

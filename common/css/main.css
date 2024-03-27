@@ -157,27 +157,27 @@ th{
     padding-bottom:5px;
     float:inline-start;
 }
-.word_id{
+.token_id{
     display:inline-block;
     font-weight:bolder;
     margin-top: 10px;
     margin-bottom:10px;
 }
-.word_frequency{
+.token_frequency{
     font-weight:bolder;
     display:block;
     float:left;
     margin-top: 10px;
     margin-bottom:10px;
 }
-.word_average{
+.token_average{
     font-weight:bolder;
     display:block;
     float:right;
     margin-top: 10px;
     margin-bottom:10px;
 }
-.word_sector{
+.token_sector{
     text-align:center;
     border:5px solid black;
     border-radius: 15px;
