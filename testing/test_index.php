@@ -11,7 +11,6 @@ $time = filter_input(INPUT_GET, 'time', FILTER_UNSAFE_RAW);
 $letter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW);
 $string = filter_input(INPUT_POST, 'string', FILTER_UNSAFE_RAW);
 $handMode = filter_input(INPUT_POST, 'handMode', FILTER_UNSAFE_RAW);
-var_dump($_POST);
 
 if($filter){
     set_filter($filter);
@@ -55,7 +54,6 @@ if($string && $time){
     $action = 'test';
     $type = 'strings';
 }
-
 switch ($action) {
     case 'test':
         switch($type){
@@ -63,15 +61,18 @@ switch ($action) {
                 $word_data = read_words_data();
                 include("view/display_word.php");
                 break;
+
             case 'letters':
                 $letter_data = read_alphas_data();
                 include("view/display.php");
                 break;
+
             case'strings':
                 $string_data = read_strings_data();
                 include("view/display_string.php");
                 break;
         }
+        break;
     default:
         include "./view/test_filter.php";
         

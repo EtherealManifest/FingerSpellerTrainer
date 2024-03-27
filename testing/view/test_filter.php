@@ -1,8 +1,8 @@
 
 <?php include("view/header.php"); ?>
 
-<div>
-    <form action="test_index.php" method="POST">
+<div class = "test_filter_form">
+    <form action="test_index.php" method="POST" class="filter_form">
         <input type="hidden" name="action" value="test">
         <label for="volume">Number of Words to Test: </label> 
         <select required name="volume" id="volume">
@@ -15,7 +15,7 @@
         <br>
 
         <label for="filter">Filter By </label> 
-        <select required class="test_index_filter" name="filter" id="filter">
+        <select required class="filter_form" name="filter" id="filter">
             <option disabled selected value> -- select an option -- </option>
             <option value="haste">Fastest</option>
             <option value="tarry">Slowest</option>
@@ -28,15 +28,15 @@
         <br>
 
         <label for="type">Test:  </label>
-        <select required name="type" id="type">
+        <select required name="type" id="type" class="filter_form">
             <option disabled selected value> -- select an option -- </option>
             <option value="words">Words</option>
             <option value="letters">Letters</option>
             <option value="strings">Strings</option>
         </select>
         <br>
-
-        <button class="submit">SUBMIT</button>
+        <label for = "submit">Submit</label><br>
+        <button type="submit" class="submit">SUBMIT</button>
     </form>
 </div>
 

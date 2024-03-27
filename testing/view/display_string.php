@@ -34,7 +34,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         ) {
              var $string = document.getElementById('megaString').innerHTML;
              var time = document.getElementById('timer').innerHTML;
-            window.location.replace("index.php?string="+$string+"&time="+time);
+            window.location.replace("test_index.php?string="+$string+"&time="+time);
         }
     }
     )

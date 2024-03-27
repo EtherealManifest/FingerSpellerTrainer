@@ -36,9 +36,10 @@ if(!$action) {
         reset_Strings();
         header("Location: .?action=stats");
     case 'stats':
-        $letter_data = read_alphas_data();
-        $word_data = read_words_data();
-        $string_data = read_strings_data();
+        echo "echoing all entries"; 
+        $letter_data = read_alphas_data_stats();
+        $word_data = read_words_data_stats();
+        $string_data = read_strings_data_stats();
         include 'view/statistics.php';
         break;
     case('add'):

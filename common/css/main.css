@@ -28,10 +28,7 @@ th{
     margin-bottom:10px;
 }
 .megaLetter{
-    border:5px solid black;
-    border-radius: 15px;
-    width:20%;
-    margin-left:40%;
+    
     text-align:center;
     font-weight:bolder;
     font-size: 15em;
@@ -50,9 +47,6 @@ th{
     margin-bottom:10px;
 }
 #megaWord {
-    border:5px solid black;
-    border-radius: 15px;
-    width:auto;
     margin-left:auto;
     text-align:center;
     font-weight:bolder;
@@ -68,6 +62,7 @@ th{
     margin: 10px 0px 5px;
     padding: 2px 0px 2px 0px;
 }
+
 #timer{
     margin: 0px;
     text-align: center;
@@ -108,6 +103,11 @@ th{
 .data{
     font-style: italic;
 }
+.filter_form{
+    text-align:center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .letter {
     font-weight: bold;
     margin-top: 0;
@@ -141,10 +141,48 @@ th{
 .string_stats_table{
     float:left;
 }
+
+.submit{
+    font-family: fingerSpell;
+}
+.test_filter_form{
+    align-content: center;
+    justify-content: center;
+    border: 2px solid black;
+    width:25%;
+    margin-left:38.5%;
+}
 .test_nav{
 
     padding-bottom:5px;
     float:inline-start;
+}
+.word_id{
+    display:inline-block;
+    font-weight:bolder;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+.word_frequency{
+    font-weight:bolder;
+    display:block;
+    float:left;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+.word_average{
+    font-weight:bolder;
+    display:block;
+    float:right;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+.word_sector{
+    text-align:center;
+    border:5px solid black;
+    border-radius: 15px;
+    width:fit-content;
+    margin:0 auto;
 }
 .word_stats_table{
     float:left;

@@ -20,8 +20,8 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <?php function test(){ ?>
     <?php 
     global $word_data;
-    $word = get_random_word();
-    echo $word[0]["word"];
+    $word = $word_data[random_int(0, count($word_data)-1)];
+    return $word;
 }
 ?>
 <script>
@@ -32,9 +32,9 @@ takes to sign it, then display it, and immediatley begin listening for the user 
       e.code == "Space" ||      
       e.keyCode == 32      
         ) {
-             var $Word = document.getElementById('megaWord').innerHTML;
-             var time = document.getElementById('timer').innerHTML;
-            window.location.replace("index.php?word="+$Word+"&time="+time);
+            var $Word = document.getElementById('megaWord').innerHTML;
+            var time = document.getElementById('timer').innerHTML;
+            window.location.replace("test_index.php?word="+$Word+"&time="+time);
         }
     }
     )
@@ -57,14 +57,23 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 
 <!--Start the timer, stored in begin -->
 <script> var begin = startWatch(); </script>
-<p id= "megaWord"><?php test()?></p>
+<div class="word_sector">
+    <?php 
+    $this_word = test();
+    ?>
+    <p class = "word_id">#<?=$this_word["ID"]?></p>
+    <p class = "word_frequency"><?=$this_word["frequency"]?></p>
+    <p class = "word_average"><?=$this_word["average"]?></p>
+    <p id= "megaWord"><?=$this_word["word"]?></p>
+    
+</div>
 <p id= "timer"></p>
 <script>
     setInterval(timer, 1);
     function timer(){
         var end = stopWatch(); 
         timetaken= elapsedTime(begin, end);
-        document.getElementById("timer").innerHTML = timetaken;
+        document.getElementById("timer").innerHTML = timetaken/1000;
     }
 </script>
 <?php include 'footer.php'; ?>

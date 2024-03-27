@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
 <div class="letter_stats_table">
+    <p><?=get_filter()." --- ".get_volume();?></p>
     <p class="stat_table_label">LETTERS</p>
     <table>
         <tr>

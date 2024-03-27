@@ -35,6 +35,23 @@ function read_alphas_data()
     return $items;
 }
 
+function read_alphas_data_stats()
+{
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM alpha_frequency';
+    $add = add_filter_stats();
+    if ($add == '') {
+        $query .= " ORDER BY letter";
+    } else {
+        $query .= $add;
+    }
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
 function write_alpha_data($letter, $time)
 {
     $letter = str_replace(' ', '', $letter);
@@ -129,6 +146,24 @@ function read_words_data()
     return $items;
 }
 
+function read_words_data_stats()
+{
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM word_frequency';
+    $add = add_filter_stats();
+    if ($add == '') {
+        $query .= " ORDER BY word";
+
+    } else {
+        $query .= $add;
+    }
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
 function write_word_data($word, $time)
 {
     $word = str_replace(' ', '', $word);
@@ -183,7 +218,8 @@ function get_random_word()
     global $db;
     #Our query will be run on the database, so in this case it needs everything from our task list.
     $query = 'SELECT * FROM word_frequency';
-    $query .= add_filter();
+    $query .= add_filter_stats();
+    $query .= " LIMIT 1";
     $statement = $db->prepare($query);
     $statement->execute();
     $items = $statement->fetchAll();
@@ -208,6 +244,23 @@ function read_strings_data()
     if ($add == '') {
         $query .= " ORDER BY string";
         $query .= add_volume();
+    } else {
+        $query .= $add;
+    }
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    $statement->closeCursor();
+    return $items;
+}
+function read_strings_data_stats()
+{
+    global $db;
+    #Our query will be run on the database, so in this case it needs everything from our task list.
+    $query = 'SELECT * FROM string_frequency';
+    $add = add_filter_stats();
+    if ($add == '') {
+        $query .= " ORDER BY string";
     } else {
         $query .= $add;
     }
@@ -376,6 +429,35 @@ function add_filter()
 
 }
 
+function add_filter_stats()
+{
+    $filter = get_filter();
+    $query = " ORDER BY ";
+    switch ($filter) {
+        case 'haste':
+            $query .= "haste";
+            break;
+        case 'tarry':
+            $query .= "tarry DESC";
+            break;
+        case 'new':
+            $query .= "ID DESC";
+            break;
+        case 'old':
+            $query .= "ID";
+            break;
+        case 'common':
+            $query .= "frequency DESC";
+            break;
+        case 'rare':
+            $query .= "frequency";
+            break;
+        default:
+            $query = '';
+    }
+    return $query;
+
+}
 function add_volume()
 {
     $query = ' LIMIT ' . get_volume();
