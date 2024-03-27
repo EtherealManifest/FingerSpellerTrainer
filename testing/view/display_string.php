@@ -20,8 +20,8 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <?php function test(){ ?>
     <?php 
     global $string_data;
-    $string = get_random_string();
-    echo $string[0]["string"];
+    $string = $string_data[random_int(0, count($string_data)-1)];
+    return $string;
 }
 ?>
 <script>
@@ -57,7 +57,15 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 
 <!--Start the timer, stored in begin -->
 <script> var begin = startWatch(); </script>
-<p id= "megaString"><?php test()?></p>
+<div class="token_sector">
+    <?php 
+    $this_string = test();
+    ?>
+    <p class = "token_id">#<?=$this_string["ID"]?></p>
+    <p class = "token_frequency"><?=$this_string["frequency"]?></p>
+    <p class = "token_average"><?=$this_string["average"]?></p>
+    <p id= "megaString"><?=$this_string["string"]?></p>
+</div>
 <p id= "timer"></p>
 <script>
     setInterval(timer, 1);

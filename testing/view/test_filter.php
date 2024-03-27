@@ -7,10 +7,10 @@
         <label for="volume">Number of Words to Test: </label> 
         <select required name="volume" id="volume">
             <option disabled selected value> -- select an option -- </option>
-            <option value="100">100 words</option>
-            <option value="75">75 words</option>
-            <option value="50">50 words</option>
-            <option value="25">25 words</option>
+            <option value="100">100</option>
+            <option value="75">75</option>
+            <option value="50">50</option>
+            <option value="25">25</option>
         </select>
         <br>
 
