@@ -507,3 +507,77 @@ function get_volume()
     $statement->closeCursor();
     return $items[0]["volume"];
 }
+
+function get_meta(){
+    global $db;
+    $META = array();
+    $old_volume = get_volume();
+    $old_filter = get_filter();
+    set_volume(1);
+    
+    //this function will get the fastest, slowest, most and least common, total number, and total signs for all three categories
+    //fastest and slowest
+    set_filter("haste");
+    $META['fastest_string']= read_strings_data()[0];
+    $META['fastest_word']= read_words_data()[0];
+    $META['fastest_letter']= read_alphas_data()[0];
+    set_filter("tarry");
+    $META['slowest_string']= read_strings_data()[0];
+    $META['slowest_word']= read_words_data()[0];
+    $META['slowest_letter']= read_alphas_data()[0];
+
+
+    //most and meast common
+    set_filter("common");
+    $META['common_string'] = read_strings_data()[0];
+    $META['common_word'] = read_words_data()[0];
+    $META['common_letter'] = read_alphas_data()[0];
+    set_filter("rare");
+    $META['rare_string'] = read_strings_data()[0];
+    $META['rare_word'] = read_words_data()[0];
+    $META['rare_letter'] = read_alphas_data()[0];
+
+    //total number
+
+    $META['total_strings'] = count(read_strings_data_stats());
+    $META['total_words'] = count(read_words_data_stats());
+    $META['total_letters'] = count(read_alphas_data_stats());
+
+    //total signs
+    $strings = read_strings_data_stats();
+    $strings_total=0;
+    $strings_num_total = 0;
+    foreach( $strings as $string){
+        $strings_total += $string['frequency'];
+        $strings_num_total += $string['average'] * $string['frequency'];
+    }
+
+    $words = read_words_data_stats();
+    $words_total=0;
+    $words_num_total = 0;
+    foreach( $words as $word){
+        $words_total += $word['frequency'];
+        $words_num_total += $word['average'] * $word['frequency'];
+    }
+
+    $letters = read_alphas_data_stats();
+    $letters_total=0;
+    $letters_num_total = 0;
+    foreach( $letters as $letter){
+        $letters_total += $letter['frequency'];
+        $letters_num_total += $letter['average'] * $letter['frequency'];
+
+    }
+    $META['signed_strings'] = $strings_total;
+    $META['signed_words'] = $words_total;
+    $META['signed_letters'] = $letters_total;
+
+    $META['total_time_string'] = $strings_num_total;
+    $META['total_time_word'] = $words_num_total;
+    $META['total_time_letter'] = $letters_num_total;
+
+    set_filter($old_filter);
+    set_volume($old_volume);
+
+    return $META;
+}

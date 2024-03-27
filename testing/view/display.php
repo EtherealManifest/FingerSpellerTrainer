@@ -20,7 +20,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
 <?php function test(){ ?>
     <?php 
     global $letter_data;
-    $letter_num = rand(0, get_volume()-1);
+    $letter_num = rand(0, min(get_volume()-1, 24));
     $letter = chr($letter_num);
     $_letter_ = $letter_data[$letter_num];
     return $_letter_;

@@ -73,9 +73,10 @@ th{
 
 .add_nav{
     width:10%;
-    padding-left:30%;
+    margin-right:10%;
     padding-bottom:5px;
-    float:inline-start;
+    display:block;
+    float:right;
 }
 .attribute{
     font-weight: bold;
@@ -116,7 +117,8 @@ th{
     float:left;
 }
 .navigation{
-    display:flex;
+    width:auto;
+    align-content:center;
 }
 .nav_button{
     width: 12em;
@@ -128,7 +130,7 @@ th{
     width:10%;
     padding-left:34.35%;
     padding-bottom:5px;
-    clear:right;
+    display:inline-block;
 }
 .stat_table_label{
     text-align:center;
@@ -150,9 +152,9 @@ th{
     margin-left:38.5%;
 }
 .test_nav{
-
+    justify-self: center;
     padding-bottom:5px;
-    float:inline-start;
+    display:block;
 }
 .token_id{
     display:inline-block;

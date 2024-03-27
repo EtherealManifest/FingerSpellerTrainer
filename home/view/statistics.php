@@ -1,19 +1,98 @@
 <?php include 'header.php'; ?>
 <div class="letter_stats_table">
-    <p><?=get_filter()." --- ".get_volume();?></p>
-    <p class="stat_table_label">LETTERS</p>
-    <table>
+    <div class = "Meta Stats">
+    <?php
+        $data = get_meta();
+        ?>
+    <p class = "stat_table_label">Meta Stats</p>
+    <table class = "meta_stats">
         <tr>
-            <th>ID</th>
-            <th>LETTER</th>
-            <th>Times Signed</th>
-            <th>Haste</th>
-            <th>Tarry</th>
-            <th>Average</th>
+            <th></th>
+            <th>String</th>
+            <th></th>
+            <th>Word</th>
+            <th></th>
+            <th>Letter</th>
+            <th></th>
         </tr>
-
-        <?php foreach ($letter_data as $attribute) { ?>
+        <tr>
+            <td class = "attribute">Fastest</td>
+            <td><?=$data["fastest_string"]["string"]?></td>
+            <td><?=$data["fastest_string"]["haste"]?></td>
+            <td><?=$data["fastest_word"]["word"]?></td>
+            <td><?=$data["fastest_word"]["haste"]?></td>
+            <td>'<?=$data["fastest_letter"]["letter"]?> '</td>
+            <td><?=$data["fastest_letter"]["haste"];?></td>
+        </tr>
+        <tr>
+            <td class = "attribute">Slowest</td>
+            <td><?=$data["slowest_string"]["string"]?></td>
+            <td><?=$data["slowest_string"]["tarry"]?></td>
+            <td><?=$data["slowest_word"]["word"]?></td>
+            <td><?=$data["slowest_word"]["tarry"]?></td>
+            <td>'<?=$data["slowest_letter"]["letter"]?> '</td>
+            <td><?=$data["slowest_letter"]["tarry"]?></td>
+        </tr>
+        <tr>
+            <td class = "attribute">Most Common</td>
+            <td><?=$data["common_string"]["string"];?></td>
+            <td><?=$data["common_string"]["frequency"]?></td>
+            <td><?=$data["common_word"]["word"];?></td>
+            <td><?=$data["common_word"]["frequency"]?></td>
+            <td><?=$data["common_letter"]["letter"];?></td>
+            <td><?=$data["common_letter"]["frequency"]?></td>
+        </tr>
+        <tr>
+            <td class = "attribute">Least Common</td>
+            <td><?=$data["rare_string"]["string"];?></td>
+            <td><?=$data["rare_string"]["frequency"]?></td>
+            <td><?=$data["rare_word"]["word"];?></td>
+            <td><?=$data["rare_word"]["frequency"]?></td>
+            <td><?=$data["rare_letter"]["letter"];?></td>
+            <td><?=$data["rare_letter"]["frequency"]?></td>
+        </tr>
+        <tr>
+            <td class = "attribute">Total #</td>
+            <td><?=$data["total_strings"];?></td>
+            <td></td>
+            <td><?=$data["total_words"];?></td>
+            <td></td>
+            <td><?=$data["total_letters"];?></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class = "attribute">total # Signed</td>
+            <td><?=$data["signed_strings"];?></td>
+            <td></td>
+            <td><?=$data["signed_words"];?></td>
+            <td></td>
+            <td><?=$data["signed_letters"];?></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class = "attribute">total time Signing</td>
+            <td><?=$data["total_time_string"];?></td>
+            <td></td>
+            <td><?=$data["total_time_word"];?></td>
+            <td></td>
+            <td><?=$data["total_time_letter"];?></td>
+            <td></td>
+        </tr>
+</table>
+</div>
+        <p class="stat_table_label">LETTERS</p>
+        <table>
             <tr>
+                <th>ID</th>
+                <th>LETTER</th>
+                <th>Times Signed</th>
+                <th>Haste</th>
+                <th>Tarry</th>
+                <th>Average</th>
+            </tr>
+
+            <?php foreach ($letter_data as $attribute) { ?>
+                <tr>
 
                     <td class='attribute'>
                         <?= $attribute["ID"] ?>
@@ -33,13 +112,13 @@
                     <td class='data'>
                         <?= $attribute["average"] ?>
                     </td>
-            </tr>
-        <?php } ?>
-        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-            <input type="hidden" name="action" value="reset_letters">
-            <button type="submit">RESET ALL LETTER VALUES</button>
-        </form>
-    </table>
+                </tr>
+            <?php } ?>
+            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+                <input type="hidden" name="action" value="reset_letters">
+                <button type="submit">RESET ALL LETTER VALUES</button>
+            </form>
+        </table>
 </div>
 <div class="string_stats_table">
     <p class="stat_table_label">S-T-R-I-N-G-S</p>
