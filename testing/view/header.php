@@ -11,10 +11,8 @@
     <p class="caption">H a n d S p e a k  - T r a i n e r</p>
 </header>
 <nav class = "navigation">
-    <div class = "test_nav">
         <a href = "../home/index.php"><button class = "nav_button">Home</button></a><br>
         <a href = "./test_index.php"><button class = "nav_button">Test</button></a><br>
-    <div>
 
 </nav>
 <body>

@@ -71,13 +71,7 @@ th{
 
 
 
-.add_nav{
-    width:10%;
-    margin-right:10%;
-    padding-bottom:5px;
-    display:block;
-    float:right;
-}
+
 .attribute{
     font-weight: bold;
 }
@@ -116,22 +110,49 @@ th{
 .letter_stats_table{
     float:left;
 }
+.meta_stats_sector{
+    margin:auto;
+    text-align:center;
+
+}
+.meta_stats{
+    margin:auto;
+    width:fit-content;
+}
+.meta_table_label{
+    font-weight: bold;
+    font-size: 2em;
+}
 .navigation{
+    display:flex;
+    border: 2px double black;
+    padding: 1em;
     width:auto;
-    align-content:center;
+    justify-content: space-between;
 }
 .nav_button{
-    width: 12em;
+    width: 9em;
     background-color: lightsteelblue;
     border: 1px solid steelblue;
+    padding:5px;
+    font-weight:bold;
+    font-size: 1.6em;
+    font-family:'Times New Roman', Times, serif;
     
 }
-.stats_nav{
-    width:10%;
-    padding-left:34.35%;
-    padding-bottom:5px;
-    display:inline-block;
+.nav_button:hover{
+    width: 9em;
+    background-color: steelblue;
+    border: 2px solid rgb(43, 119, 182);
+    padding:5px;
+    font-weight:bold;
+    font-size: 1.7em;
+    font-family:'Times New Roman', Times, serif;
+    transition: .1s;
+    color:rgb(207, 220, 255)
+    
 }
+
 .stat_table_label{
     text-align:center;
     font-weight: bold;
@@ -151,11 +172,7 @@ th{
     width:25%;
     margin-left:38.5%;
 }
-.test_nav{
-    justify-self: center;
-    padding-bottom:5px;
-    display:block;
-}
+
 .token_id{
     display:inline-block;
     font-weight:bolder;

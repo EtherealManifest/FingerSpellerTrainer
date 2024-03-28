@@ -36,7 +36,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         ) {
              var letter = document.getElementById('megaLetter').innerHTML;
              var time = document.getElementById('timer').innerHTML;
-            window.location.replace("test_index.php?letter="+letter+"&time="+time);
+            window.location.replace("test_index.php?letter="+letter+"&time="+time * 1000);
         }
     }
     )
@@ -86,7 +86,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
     function timer(){
         var end = stopWatch(); 
         timetaken= elapsedTime(begin, end);
-        document.getElementById("timer").innerHTML = timetaken;
+        document.getElementById("timer").innerHTML = timetaken/1000;
     }
 </script>
 <?php include 'footer.php'; ?>

@@ -21,7 +21,7 @@ set_filter($filter);
 if(!$action) {
     $action = filter_input(INPUT_GET, 'action', FILTER_UNSAFE_RAW);
     if(!$action) {
-        $action = 'stats';
+        $action = 'home';
     }
 }
  switch($action) {
@@ -60,6 +60,9 @@ if(!$action) {
     case 'add_new_string':
         add_string($new_string);
         header("Location: .?action=add_string");
+        break;
+    case 'home':
+        include('view/home.php');
         break;
  }
 ?>

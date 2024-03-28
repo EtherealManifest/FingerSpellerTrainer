@@ -1,10 +1,26 @@
 <?php include 'header.php'; ?>
-<div class="letter_stats_table">
-    <div class = "Meta Stats">
+<form action="<?=$_SERVER['PHP_SELF']?>" method="POST" class="filter_menu">
+    <input type="hidden" name="action"value="<?=$action?>">
+        <select class="dropdown-content" name="filter">
+            <option value="haste">Fastest</option>
+            <option value="tarry">Slowest</option>
+            <option value="old">Oldest</option>
+            <option value="new">Newest</option>
+            <option value="common">Common</option>
+            <option value="rare">Rare</option>
+            <option value="alpha">Alphabetical</option>
+        </select>
+        <button class="submit">SUBMIT</button>
+        </form>
+
+    <div class = "meta_stats_sector">
     <?php
         $data = get_meta();
+        $total_signs = $data["total_letters"] + $data["total_strings"] + $data["total_words"];
+        $total_signings = $data["signed_letters"] + $data["signed_strings"] + $data["signed_words"];
+        $total_sign_time = $data["total_time_letter"] + $data["total_time_string"] + $data["total_time_word"];
         ?>
-    <p class = "stat_table_label">Meta Stats</p>
+    <p class = "meta_table_label">Meta Stats</p>
     <table class = "meta_stats">
         <tr>
             <th></th>
@@ -54,32 +70,34 @@
         <tr>
             <td class = "attribute">Total #</td>
             <td><?=$data["total_strings"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_strings"]/$total_signs, 4)*100;?>%</td>
             <td><?=$data["total_words"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_words"]/$total_signs, 4)*100;?>%</td>
             <td><?=$data["total_letters"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_letters"]/$total_signs, 4)*100;?>%</td>
         </tr>
         <tr>
             <td class = "attribute">total # Signed</td>
             <td><?=$data["signed_strings"];?></td>
-            <td></td>
+            <td><?= number_format($data["signed_strings"]/$total_signings, 4)*100;?>%</td>
             <td><?=$data["signed_words"];?></td>
-            <td></td>
+            <td><?= number_format($data["signed_words"]/$total_signings, 4)*100;?>%</td>
             <td><?=$data["signed_letters"];?></td>
-            <td></td>
+            <td><?= number_format($data["signed_letters"]/$total_signings, 4)*100;?>%</td>
         </tr>
         <tr>
             <td class = "attribute">total time Signing</td>
             <td><?=$data["total_time_string"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_time_string"]/$total_sign_time, 4)*100;?>%</td>
             <td><?=$data["total_time_word"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_time_word"]/$total_sign_time, 4)*100;?>%</td>
             <td><?=$data["total_time_letter"];?></td>
-            <td></td>
+            <td><?= number_format($data["total_time_word"]/$total_sign_time, 4)*100;?>%</td>
         </tr>
 </table>
 </div>
+<div class="letter_stats_table">
+    
         <p class="stat_table_label">LETTERS</p>
         <table>
             <tr>

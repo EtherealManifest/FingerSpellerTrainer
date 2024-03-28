@@ -34,7 +34,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         ) {
             var $Word = document.getElementById('megaWord').innerHTML;
             var time = document.getElementById('timer').innerHTML;
-            window.location.replace("test_index.php?word="+$Word+"&time="+time);
+            window.location.replace("test_index.php?word="+$Word+"&time="+time * 1000);
         }
     }
     )
