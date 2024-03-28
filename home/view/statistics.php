@@ -92,7 +92,7 @@
             <td><?=$data["total_time_word"];?></td>
             <td><?= number_format($data["total_time_word"]/$total_sign_time, 4)*100;?>%</td>
             <td><?=$data["total_time_letter"];?></td>
-            <td><?= number_format($data["total_time_word"]/$total_sign_time, 4)*100;?>%</td>
+            <td><?= number_format($data["total_time_letter"]/$total_sign_time, 4)*100;?>%</td>
         </tr>
 </table>
 </div>
