@@ -77,7 +77,7 @@
             <td><?= number_format($data["total_letters"]/$total_signs, 4)*100;?>%</td>
         </tr>
         <tr>
-            <td class = "attribute">total # Signed</td>
+            <td class = "attribute">Total Times Signed</td>
             <td><?=$data["signed_strings"];?></td>
             <td><?= number_format($data["signed_strings"]/$total_signings, 4)*100;?>%</td>
             <td><?=$data["signed_words"];?></td>
@@ -86,12 +86,12 @@
             <td><?= number_format($data["signed_letters"]/$total_signings, 4)*100;?>%</td>
         </tr>
         <tr>
-            <td class = "attribute">total time Signing</td>
-            <td><?=$data["total_time_string"];?></td>
+            <td class = "attribute">Total Time Signing</td>
+            <td><?=number_format($data["total_time_string"]/60,2);?> minutes</td>
             <td><?= number_format($data["total_time_string"]/$total_sign_time, 4)*100;?>%</td>
-            <td><?=$data["total_time_word"];?></td>
+            <td><?=number_format($data["total_time_word"]/60,2);?> minutes</td>
             <td><?= number_format($data["total_time_word"]/$total_sign_time, 4)*100;?>%</td>
-            <td><?=$data["total_time_letter"];?></td>
+            <td><?=number_format($data["total_time_letter"]/60, 2);?> minutes</td>
             <td><?= number_format($data["total_time_letter"]/$total_sign_time, 4)*100;?>%</td>
         </tr>
 </table>
@@ -132,10 +132,12 @@
                     </td>
                 </tr>
             <?php } ?>
+            <span class="hidden">
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
                 <input type="hidden" name="action" value="reset_letters">
-                <button type="submit">RESET ALL LETTER VALUES</button>
+                <button type="submit" class="DELETE_BUTTON">RESET ALL LETTER VALUES</button>
             </form>
+            </span>
         </table>
 </div>
 <div class="string_stats_table">
@@ -176,10 +178,12 @@
                 </td>
             </tr>
         <?php } ?>
+        <span class="hidden">
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
             <input type="hidden" name="action" value="reset_strings">
-            <button type="submit">RESET STRING VALUES</button>
+            <button type="submit" class="DELETE_BUTTON">RESET STRING VALUES</button>
         </form>
+        </span>
     </table>
 </div>
 
@@ -216,10 +220,12 @@
                 </td>
             </tr>
         <?php } ?>
+        <span class="hidden">
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
             <input type="hidden" name="action" value="reset_words">
-            <button type="submit">RESET WORD VALUES</button>
+            <button type="submit" class="DELETE_BUTTON">RESET WORD VALUES</button>
         </form>
+        </span>
     </table>
 </div>
 

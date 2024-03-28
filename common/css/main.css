@@ -95,10 +95,19 @@ th{
 .data{
     font-style: italic;
 }
+
 .filter_form{
     text-align:center;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+.hidden button{
+    visibility:hidden;
+    transition:.5s;
+}
+.hidden:hover button{
+    visibility:visible;
+    transition:.5s;
 }
 .letter {
     font-weight: bold;
