@@ -97,6 +97,9 @@ function reset_Letters()
     $statement->closeCursor();
 }
 
+function delete_alpha($word_id){}
+
+function edit_alpha($word_data){}
 
 
 #--------------------------------------------------------------------------------------------------
@@ -200,15 +203,16 @@ function write_word_data($word, $time)
     $statement->closeCursor();
 }
 
-function add_word($word)
+function add_word($word, $hint="")
 {
     global $db;
 
-    $query = 'INSERT INTO `word_frequency`(`word`, `frequency`,`haste`, `tarry`, `average`) 
-              VALUES (:word,0,999.99,0.00,0.00)';
+    $query = 'INSERT INTO `word_frequency`(`word`, `frequency`,`haste`, `tarry`, `average`, `hint`) 
+              VALUES (:word,0,999.99,0.00,0.00, :hint)';
 
     $statement = $db->prepare($query);
     $statement->bindValue(':word', $word);
+    $statement->bindValue(':hint', $hint);
     $statement->execute();
     $statement->closeCursor();
 }
@@ -226,6 +230,47 @@ function get_random_word()
     $statement->closeCursor();
     return $items;
 }
+
+function delete_word($word_id){
+    global $db;
+    $query = 'DELETE FROM `word_frequency` WHERE ID = :ID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':ID', $word_id);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function edit_word($word_data){
+
+    global $db;
+
+    $id = $word_data['ID'];
+    $word = $word_data['word'];
+    $haste = $word_data['haste'];
+    $tarry = $word_data['tarry'];
+    $average = $word_data['average'];
+    $hint = $word_data['hint'];
+    $frequency =$word_data['frequency'];
+
+    $query = 'UPDATE `word_frequency` SET frequency= :frequency,
+                                           haste= :haste,
+                                           tarry= :tarry,
+                                           average= :average,
+                                           word= :word ,
+                                           hint = :hint
+                                           WHERE ID = :id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':frequency', $frequency);
+    $statement->bindValue(':haste', $haste);
+    $statement->bindValue(':tarry', $tarry);
+    $statement->bindValue(':average', $average);
+    $statement->bindValue(':word', $word);
+    $statement->bindValue(':hint', $hint);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
 
 
 
@@ -369,6 +414,11 @@ function read_string_data($string)
 
 }
 
+function delete_string($word_id){
+    
+}
+
+function edit_string($word_data){}
 
 #--------------------------------------------------------------------------------------------------
 #HandMode Functions

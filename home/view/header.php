@@ -16,6 +16,8 @@
         <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a>
         <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a>
         <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a>
+        <a href = "../admin/admin_index.php"><button class = "nav_button"> Admin</button></a>
+
 </nav>
 <body>
     <main class="main">

@@ -5,7 +5,7 @@
     <form action="test_index.php" method="POST" class="filter_form">
         <input type="hidden" name="action" value="test">
         <label for="volume">Number of Words to Test: </label> 
-        <select required name="volume" id="volume">
+        <select required name="volume" id="volume" class = "filter_select">
             <option disabled selected value> -- select an option -- </option>
             <option value="100">100</option>
             <option value="75">75</option>
@@ -18,7 +18,7 @@
         <br>
 
         <label for="filter">Filter By </label> 
-        <select required class="filter_form" name="filter" id="filter">
+        <select required class = "filter_select" name="filter" id="filter">
             <option disabled selected value> -- select an option -- </option>
             <option value="haste">Fastest</option>
             <option value="tarry">Slowest</option>
@@ -31,7 +31,7 @@
         <br>
 
         <label for="type">Test:  </label>
-        <select required name="type" id="type" class="filter_form">
+        <select required name="type" id="type" class = "filter_select">
             <option disabled selected value> -- select an option -- </option>
             <option value="words">Words</option>
             <option value="letters">Letters</option>

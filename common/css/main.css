@@ -16,6 +16,7 @@ th{
     border: 2px solid black;
     text-align: center;
 }
+
 .megaLetterHand{
     font-family:fingerSpell;
     text-align:center;
@@ -95,10 +96,20 @@ th{
 .data{
     font-style: italic;
 }
-
+.edit_form{
+    display:none;
+}
+.edit_form input{
+    display:block;
+}
+.filter_select{
+    font-family: 'Times New Roman', Times, serif;
+    height:2em;
+    font-size:.7em;
+}
 .filter_form{
     text-align:center;
-    margin-top: 5px;
+    margin-top: 50px;
     margin-bottom: 5px;
 }
 .hidden button{
@@ -131,6 +142,10 @@ th{
 .meta_table_label{
     font-weight: bold;
     font-size: 2em;
+}
+.modify_words_table{
+    width: 60%;
+    margin-left:20%;
 }
 .navigation{
     display:flex;
@@ -173,14 +188,19 @@ th{
 
 .submit{
     font-family: fingerSpell;
+    height:2em;
+    font-size: 1.3em;
 }
 .test_filter_form{
     align-content: center;
     justify-content: center;
     border: 2px solid black;
-    width:25%;
+    width:35%;
     margin-left:38.5%;
+    margin-top:1.5em;
+    font-size: 2em;
 }
+
 
 .token_id{
     display:inline-block;
@@ -208,6 +228,10 @@ th{
     border-radius: 15px;
     width:fit-content;
     margin:0 auto;
+}
+.word_modify_table{
+    margin:auto;
+    font-size:1.7em
 }
 .word_stats_table{
     float:left;

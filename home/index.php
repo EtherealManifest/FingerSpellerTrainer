@@ -3,6 +3,7 @@ require_once('../common/db.php');
 require_once('../common/sign.php');
 $action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW);
 $new_Word = filter_input(INPUT_POST, 'new_Word', FILTER_UNSAFE_RAW);
+$hint = filter_input(INPUT_POST, 'new_hint', FILTER_UNSAFE_RAW);
 $new_string = filter_input(INPUT_POST, 'new_string', FILTER_UNSAFE_RAW);
 $message = filter_input(INPUT_GET, 'message', FILTER_UNSAFE_RAW);
 $filter = filter_input(INPUT_POST, 'filter', FILTER_UNSAFE_RAW);
@@ -49,8 +50,8 @@ if(!$action) {
             $message = "Word Already in Database";
         }
         else{
-        add_word($new_Word);
-        $message = $new_word." Added";
+        add_word($new_Word, $new_hint);
+        $message = $new_Word." Added";
         }
         header("Location: .?action=add&message=".$message);
         break;
