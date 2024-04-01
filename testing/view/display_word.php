@@ -38,6 +38,7 @@ takes to sign it, then display it, and immediatley begin listening for the user 
         }
     }
     )
+
 </script>
 <!-- Start of the page display -->
 <!--This adds a listener to change the values on the page as needed -->
@@ -65,7 +66,22 @@ takes to sign it, then display it, and immediatley begin listening for the user 
     <p class = "token_frequency"><?=$this_word["frequency"]?></p>
     <p class = "token_average"><?=$this_word["average"]?></p>
     <p id= "megaWord"><?=$this_word["word"]?></p>
-    
+    <p id = "hint_text"><?=$this_word["hint"]?></p>  
+    <!--This toggles the hint text on and off-->
+        <script>
+        hint = document.getElementById("hint_text");
+        hint.addEventListener("click", function(e) {
+            if(hint.style.color == "black"){
+                hint.style.color = 'white';
+            }
+            else if(hint.style.color == 'white'){
+                hint.style.color = 'black';
+            }
+            else{
+                hint.style.color = "white";
+            }
+        });
+        </script>  
 </div>
 <p id= "timer"></p>
 <script>

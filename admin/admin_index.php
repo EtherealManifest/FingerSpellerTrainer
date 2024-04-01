@@ -15,7 +15,7 @@ $filter = filter_input(INPUT_POST, 'filter', FILTER_UNSAFE_RAW);
 $haste = filter_input(INPUT_POST, 'haste', FILTER_UNSAFE_RAW);
 $tarry = filter_input(INPUT_POST, 'tarry', FILTER_UNSAFE_RAW);
 $average = filter_input(INPUT_POST, 'average', FILTER_UNSAFE_RAW);
-$hint = filter_input(INPUT_POST, 'hint', FILTER_UNSAFE_RAW);
+$hint = filter_input(INPUT_POST, 'new_hint', FILTER_UNSAFE_RAW);
 $word = filter_input(INPUT_POST, 'word', FILTER_UNSAFE_RAW);
 $word_id = filter_input(INPUT_POST, 'word_id', FILTER_UNSAFE_RAW);
 $frequency = filter_input(INPUT_POST, 'frequency', FILTER_UNSAFE_RAW);
@@ -72,7 +72,7 @@ if(!$action) {
             $message = "Word Already in Database";
         }
         else{
-        add_word($new_Word);
+        add_word($new_Word, $hint);
         $message = $new_word." Added";
         }
         header("Location: admin_index.php?action=add&message=".$message);
