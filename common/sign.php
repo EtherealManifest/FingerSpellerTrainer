@@ -631,3 +631,25 @@ function get_meta(){
 
     return $META;
 }
+
+function add_to_category($word_id, $category){
+    global $db;
+    switch($category){
+        case 'food':
+            $query = "INSERT INTO `food_signs`(`word_id`) VALUES (:id)";
+            break;
+        case 'household':
+            $query = "INSERT INTO `household_signs`(`word_id`) VALUES (:id)";
+            break;
+    case 'environment':
+            $query = "INSERT INTO `environment_signs`(`word_id`) VALUES (:id)";
+            break;
+    case 'action':
+            $query = "INSERT INTO `action_signs`(`word_id`) VALUES (:id)";
+            break;    
+    }
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $word_id);
+    $statement->execute();
+    $statement->closeCursor();
+}

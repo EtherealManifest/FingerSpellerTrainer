@@ -42,7 +42,7 @@
         <button type="submit" class="submit">SUBMIT</button>
     </form>
 </div>
-<div class = "preset Tests">
+<div class = "preset_tests">
     <form action="test_index.php" method="POST" class="filter_fast">
         <input type="hidden" name="action" value="test">
         <input type="hidden" name="type" value = "words">

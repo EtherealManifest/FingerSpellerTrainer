@@ -67,6 +67,11 @@ takes to sign it, then display it, and immediatley begin listening for the user 
     <p class = "token_average"><?=$this_word["average"]?></p>
     <p id= "megaWord"><?=$this_word["word"]?></p>
     <p id = "hint_text"><?=$this_word["hint"]?></p>  
+    <p>
+            <a id = "hint_link" href = 
+                "https://lifeprint.com/asl101/pages-signs/<?php echo mb_substr($this_word["word"], 0, 1)."/".$this_word["word"]?>.htm" target = "_blank">
+                Need a hint for "<?=$this_word["word"]?>"?</a>
+            </p> 
     <!--This toggles the hint text on and off-->
         <script>
         hint = document.getElementById("hint_text");

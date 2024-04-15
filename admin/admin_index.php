@@ -19,6 +19,7 @@ $hint = filter_input(INPUT_POST, 'new_hint', FILTER_UNSAFE_RAW);
 $word = filter_input(INPUT_POST, 'word', FILTER_UNSAFE_RAW);
 $word_id = filter_input(INPUT_POST, 'word_id', FILTER_UNSAFE_RAW);
 $frequency = filter_input(INPUT_POST, 'frequency', FILTER_UNSAFE_RAW);
+$category = filter_input(INPUT_POST, 'category', FILTER_UNSAFE_RAW);
 if($message){
     echo $message;
 }
@@ -51,6 +52,9 @@ if(!$action) {
         $word_edits['hint'] = $hint;
         $word_edits['frequency'] = $frequency;
         edit_word($word_edits);
+        if($category){
+            add_to_category($word_edits["ID"], $category);
+        }
         header("Location: admin_index.php?action=modify_word");
     case 'delete_string':
         delete_string();
@@ -73,7 +77,12 @@ if(!$action) {
         }
         else{
         add_word($new_Word, $hint);
-        $message = $new_word." Added";
+        if($category){
+            $data = read_word_data($new_Word);
+            $ID = $data[0]["ID"];
+            add_to_category($ID, $category);
+        }
+        $message = $new_Word." Added";
         }
         header("Location: admin_index.php?action=add&message=".$message);
         break;

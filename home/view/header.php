@@ -13,8 +13,6 @@
 <nav class = "navigation">
         <a href = "index.php"><button class = "nav_button">Home</button></a>
         <a href = "../testing/test_index.php"><button class = "nav_button">Test</button></a>
-        <a href = "index.php?action=add"><button class = "nav_button">Add New Word</button></a>
-        <a href = "index.php?action=add_string"><button class = "nav_button">Add New String</button></a>
         <a href = "index.php?action=stats"><button class = "nav_button"> Stats</button></a>
         <a href = "../admin/admin_index.php"><button class = "nav_button"> Admin</button></a>
 

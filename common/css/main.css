@@ -16,7 +16,17 @@ th{
     border: 2px solid black;
     text-align: center;
 }
-
+#hint_link{
+    color:black;
+    font-weight: bold;
+}
+#hint_link:hover{
+    font-size:1.2em; 
+    transition:.2s;
+}
+#hint_link:visited{
+    color:black;
+}
 #hint_text{
     border: 2px solid black;
     border-radius: 5px;
@@ -182,7 +192,19 @@ th{
     color:rgb(207, 220, 255)
     
 }
+.preset_tests{
+    width:50%;
+    margin-left:37.5%;
 
+}
+
+.preset_tests > form > button{
+    font-size:1.5em;
+    font-weight:bold;
+    width:50%;
+    height:2.5em;
+    margin-top:10px;
+}
 .stat_table_label{
     text-align:center;
     font-weight: bold;
@@ -202,7 +224,7 @@ th{
     justify-content: center;
     border: 2px solid black;
     width:35%;
-    margin-left:38.5%;
+    margin:auto;
     margin-top:1.5em;
     font-size: 2em;
 }

@@ -114,6 +114,14 @@ Copy code
                     <input type="text" name="average" placeholder="<?=$attribute["average"];?>" value="<?=$attribute["average"];?>">
                     <label for="Hint">Hint</label>
                     <input type="text" name="hint" placeholder="<?=$attribute["hint"];?>" value="<?=$attribute["hint"];?>">
+                    <label for="Category">Category:</label><br>
+                    <select name="category" id="categories">
+                        <option selected disabled value ="">No Category</option> 
+                        <option value="household">Household</option>
+                        <option value="food">Food</option>
+                        <option value="environment">Environemnt</option>
+                        <option value="action">Action</option>
+                    </select>
                     <button type="submit">Submit</button>
                 </form>
 
